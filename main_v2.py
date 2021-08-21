@@ -164,7 +164,7 @@ def draw_total_time():
         sum_min -= (sum_min // 60 * 60)
 
     draw_total_time_font = ImageFont.truetype(os.path.join(fontsFolder, 'H2HDRM.ttf'), 100)
-    draw.text((800, 250), str(sum_hour)+":"+str(sum_min), fill="black", font=draw_total_time_font)
+    draw.text((850, 250), str(sum_hour)+":"+str(sum_min), fill="black", font=draw_total_time_font)
 
 def random_color(num):
     color = [
