@@ -146,7 +146,9 @@ def draw_tasks():
         draw.text((200, 453+67*i), task_contents[i], fill="black", font=draw_tasks_content_font)
 
 
-def draw_total_time():
+def draw_total_time(img3):
+    draw = ImageDraw.Draw(img3)
+
     sum_hour, sum_min = 0, 0
     for i in range(13):
         for j in range(1, 50, 2):
@@ -251,7 +253,6 @@ def start():
     draw_Dday()
     draw_comment()
     draw_tasks()
-    draw_total_time()
 
     img.save("aaa.jpg")  # 함수들 실행 후 "aaa.jpg"에 저장
     img2 = cv2.imread("aaa.jpg")  # "aaa.jpg"를 img2로 읽기
@@ -259,5 +260,9 @@ def start():
     bbb = Image.fromarray(img2)
 
     bbb.save("bbb.jpg")  # 함수 실행 후 "bbb.jpg"로 저장
+    img3 = Image.open('bbb.jpg')
+
+    draw_total_time(img3)
+    img3.save('ccc.jpg')
 
 start()
