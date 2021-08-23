@@ -261,7 +261,6 @@ def start():
 
     bbb.save("bbb.jpg")  # 함수 실행 후 "bbb.jpg"로 저장
     img3 = Image.open('bbb.jpg')
-
     draw_total_time(img3)
     img3.save('ccc.jpg')
 
