@@ -32,7 +32,7 @@ task_dict = {
 random_list = random.sample(range(13), 12)
 
 def draw_date():
-    time_str = '2021-08-15 00:27:48.476366'
+    time_str = '2021-09-01 00:27:48.476366'
     time = datetime.datetime.strptime(time_str, '%Y-%m-%d %H:%M:%S.%f')  # 지금 시간
     date = str(time.date())  # 지금 날짜
     draw_date_font = ImageFont.truetype(os.path.join(fontsFolder, 'H2HDRM.ttf'), 100)
@@ -40,7 +40,7 @@ def draw_date():
 
 
 def draw_Dday():
-    today = datetime.date(2021, 8, 15)  # 조작하고 싶은 날의 날짜
+    today = datetime.date(2021, 9, 1)  # 조작하고 싶은 날의 날짜
     exam_date = datetime.date(2022, 11, 17)
     Dday = exam_date - today
     draw_Dday_font = ImageFont.truetype(os.path.join(fontsFolder, 'H2HDRM.ttf'), 100)
@@ -71,7 +71,7 @@ def draw_comment():
 "실수하지 않는 사람은 열심히 노력하지 않는다. (웨스 로버트)",
 "탐험되지 않은 삶은 가치가 없다. (소크라테스)",
 "성공의 80%가 서서히 나타나고 있다. (우디 앨런)",
-"당신이 할 수 있다고 생각하든, 그렇지 않다고 생각하든 – 당신 말이 맞습니다. (헨리 포드)",
+"당신이 할 수 있다고 생각하든, 그렇지 않다고 생각하든, 당신 말이 맞습니다. (헨리 포드)",
 "네가 원하는 것을 위해 싸우지 않았다면, 잃어버린 것 때문에 울지 말아라. (익명)",
 "이기는 것은 모든 것이 아니라, 유일한 것이다. (빈스 롬바르디)",
 "항상 가장 큰 노력이 필요한 것이, 바로 모든 일의 시작이다. (제임스 캐시 페니)",
@@ -85,8 +85,12 @@ def draw_comment():
 "웃어라, 온 세상이 너와 함께 웃을 것이다. 울어라, 너 혼자 울 것이다. (엘라 휠러 윌콕스)"
     ]  # 명언 모음
     num = random.randint(0, 29) # 명언 갯수
-    draw_comment_font = ImageFont.truetype(os.path.join(fontsFolder, 'H2HDRM.ttf'), 20)
-    draw.text((80, 285), comments[num], fill="black", font=draw_comment_font)
+    draw_comment_font = ImageFont.truetype(os.path.join(fontsFolder, 'H2HDRM.ttf'), 25)
+    if len(comments[num]) > 28:
+        draw.text((80, 271), comments[num][:28], fill="black", font=draw_comment_font)
+        draw.text((80, 300), comments[num][28:], fill="black", font=draw_comment_font)
+    else:
+        draw.text((80, 285), comments[num], fill="black", font=draw_comment_font)
 
 def is_int(a): # 문자열이 정수형으로 이루어져 있는지 판별 (draw_tasks()에서 사용)
     try:

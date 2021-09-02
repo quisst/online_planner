@@ -83,9 +83,13 @@ def draw_comment():
 "잘못을 찾아라. 구제책을 찾지 마라. (헨리 포드)",
 "웃어라, 온 세상이 너와 함께 웃을 것이다. 울어라, 너 혼자 울 것이다. (엘라 휠러 윌콕스)"
     ]  # 명언 모음
-    num = random.randint(0, 29) # 명언 갯수
-    draw_comment_font = ImageFont.truetype(os.path.join(fontsFolder, 'H2HDRM.ttf'), 20)
-    draw.text((80, 285), comments[num], fill="black", font=draw_comment_font)
+    num = random.randint(0, 29)  # 명언 갯수
+    draw_comment_font = ImageFont.truetype(os.path.join(fontsFolder, 'H2HDRM.ttf'), 25)
+    if len(comments[num]) > 28:
+        draw.text((80, 271), comments[num][:28], fill="black", font=draw_comment_font)
+        draw.text((80, 300), comments[num][28:], fill="black", font=draw_comment_font)
+    else:
+        draw.text((80, 285), comments[num], fill="black", font=draw_comment_font)
 
 def is_int(a): # 문자열이 정수형으로 이루어져 있는지 판별 (draw_tasks()에서 사용)
     try:
